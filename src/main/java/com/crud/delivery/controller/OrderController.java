@@ -13,10 +13,9 @@ import java.util.Optional;
 public class OrderController {
     @Autowired
     private OrderService orderService;
-
     @GetMapping
     public List<Order> getAll(){
-        return orderService.getOrder();
+        return orderService.getOrders();
     }
 
     @GetMapping("/{orderId}")

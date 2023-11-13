@@ -15,12 +15,28 @@ public class Order {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderId;
 
+    @Column(name="dni", nullable = false)
+    private String dni;
+
+    @Column(name="first_name", nullable = false)
+    private String firstName;
+
+    @Column(name="last_name", nullable = false)
+    private String lastName;
+
+    @Column(name="number_phone", nullable = false)
+    private String numberPhone;
+    @Column(name="address", nullable = false)
+    private String address;
+
+    @Column(name="method_payment", nullable = false)
+    private String methodPayment;
+
     @Column(name="total_price", nullable = false)
     private BigDecimal priceTotal;
 
     @Column(name = "order_date_time")
     private LocalDateTime orderDateTime;
-
     @PrePersist
     public void prePersist() {
         orderDateTime = LocalDateTime.now();
@@ -30,8 +46,4 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private List<OrderProduct> orderProducts;
-
-    @ManyToOne
-    Client client;
-
 }

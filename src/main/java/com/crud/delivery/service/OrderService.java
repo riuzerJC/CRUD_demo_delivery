@@ -17,7 +17,7 @@ public class OrderService {
     @Autowired
     private OrderProductService orderProductService;
 
-    public List<Order> getOrder(){
+    public List<Order> getOrders(){
         return orderRepository.findAll();
     }
     public Optional<Order> getOrder(Long id){
@@ -25,6 +25,7 @@ public class OrderService {
     }
 
     public void saveOrUpdate(Order order){
+
         List<OrderProduct> orderProducts = order.getOrderProducts();
         BigDecimal totalPrice = orderProductService.calculateTotalPrice(orderProducts);
         order.setPriceTotal(totalPrice);
